@@ -1,0 +1,6 @@
+combo:	
+  
+    MOV DX,2
+   	ADD DX,'0'
+   	MOV AH,02H
+   	INT 21H
