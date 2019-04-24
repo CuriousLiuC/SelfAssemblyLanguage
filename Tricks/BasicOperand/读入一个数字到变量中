@@ -1,0 +1,31 @@
+DATA SEGMENT
+  DW Z ?
+  
+  
+  
+  
+  
+  
+    ;代码段
+    MOV Z,0
+	  ;读入变量到Z中
+NEXT:    
+    MOV AH,1
+    INT 21H
+    CMP AL,13
+    JE BREAK
+    ;Z = Z*10
+    MOV DX,Z
+    SAL DX,1;2DX
+    SAL DX,1;4DX
+    ADD DX,Z
+    SAL DX,1
+    MOV Z,DX;z = 10z
+	  SUB AL,48
+  	MOV BL,AL
+	  MOV CL,BL
+  	MOV CH,0
+  	ADD DX,CX
+  	MOV Z,DX
+  	JMP NEXT  
+    
