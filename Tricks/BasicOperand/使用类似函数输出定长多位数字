@@ -1,0 +1,47 @@
+  调用时：CALL COUT
+    COUT PROC NEAR
+	  PUSH AX
+	  PUSH CX
+    PUSH DS
+    PUSH CS
+    POP DS
+    
+    LEA DI,@@X_5
+    MOV CX,5
+    MOV DL,9H
+    @@:MOV [DI],DL
+    INC DI
+    LOOP @B
+    DEC DI
+    MOV BX,10
+    MOV CX,5
+    @@:XOR DX,DX
+    DIV BX
+    MOV [DI],DL
+    DEC DI
+    LOOP @B
+    INC DI
+    MOV AH,2
+    MOV CX,5
+    @@:MOV DL,[DI]
+    OR DL,30H
+    INT 21H
+    INC DI
+    LOOP @B
+    
+ 	  MOV AH, 02H ;输出单个字符.
+	  MOV DL, 20H ;0D是回车符的ASCII码.
+	  INT 21H ;输出.
+	
+    POP DS
+    POP CX
+    POP AX
+   	RET
+   	COUT ENDP
+     
+     
+    还需要补充以下：
+    @@X_5 DB 5 DUP(?)
+    CODES ENDS
+    END START
+     
