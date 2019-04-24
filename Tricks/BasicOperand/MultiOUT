@@ -1,0 +1,14 @@
+	mov  bl, 10    ;AX除以10，商为十位数在AL中，余数为个位数在AH中
+    div  bl
+    push ax        ;暂存AH中内容
+     
+    add  al, 30H   ;将AL中的十位数转ASCII并输出
+    mov  dl, al
+    mov  ah, 2
+    int  21h
+     
+    pop  ax       ;取回暂存的AH中内容
+    add  ah, 30H  ;将AH中的个位数转ASCII并输出
+    mov  dl, ah
+    mov  ah, 2
+    int  21h
